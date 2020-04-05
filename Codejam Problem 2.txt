@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+signed main()
+{
+    int t;
+    cin>>t;
+    for(int i=1;i<=t;i++)
+    {
+        string s1;
+        cin>>s1;
+        int l=s1.length();
+        string a;
+        stack<int>s;
+        for(int j=0;j<l;j++)
+        {
+            int n=s1[j]-48;
+            if(s.empty())
+            {
+                for(int k=1;k<=n;k++)
+                    a+='(';
+                a+=to_string(n);
+                s.push(n);
+            }
+            else
+            {
+                int x=s.top();
+                if(x<=n)
+                {
+                    for(int k=1;k<=n-x;k++)
+                        a+='(';
+                    a+=to_string(n);
+                    s.push(n);
+                }
+                else
+                {
+                    for(int k=1;k<=x-n;k++)
+                        a+=')';
+                    a+=to_string(n);
+                    s.pop();
+                    s.push(n);
+                }
+            }
+        }
+        int r=s.top();
+        s.pop();
+            for(int j=1;j<=r;j++)
+                a+=')';
+
+        cout<<"Case #"<<i<<": "<<a<<endl;
+    }
+}
+

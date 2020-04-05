@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long
+signed main()
+{
+    int t;
+    cin>>t;
+    for(int i=1;i<=t;i++)
+    {
+        int n;
+        cin>>n;
+        int a[n+1][n+1];
+        int sum=0;
+        int cntr=0,cntc=0;
+        for(int j=1;j<=n;j++)
+        {
+            set<int>s;
+            for(int k=1;k<=n;k++)
+            {
+                cin>>a[j][k];
+                s.insert(a[j][k]);
+                if(j==k)
+                    sum+=a[j][k];
+            }
+            if(s.size()!=n)
+                cntr++;
+            s.clear();
+        }
+            for(int j=1;j<=n;j++)
+            {
+                set<int>s;
+                for(int k=1;k<=n;k++)
+                {
+                    s.insert(a[k][j]);
+                }
+                if(s.size()!=n)
+                    cntc++;
+            }
+            cout<<"Case #"<<i<<": "<<sum<<" "<<cntr<<" "<<cntc<<endl;
+        }
+    }
+
